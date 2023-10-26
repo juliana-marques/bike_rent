@@ -34,3 +34,10 @@ jobs:
           --image gcr.io/bike-rent-403120/bike-rent:$GITHUB_SHA \
           --platform managed \
           --region us-central1  
+
+    - name: Debug Info
+      run: |
+        echo "GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}"
+        gcloud auth list
+      env:
+        GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
