@@ -1,5 +1,5 @@
 from flask import Flask
-from ms_usuario.main import app_usuario
+from bike_rent.ms_usuario.main import app_usuario
 import os
 
 app = Flask(__name__)
