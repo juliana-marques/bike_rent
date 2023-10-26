@@ -1,43 +1,35 @@
-name: Python SonarQube Pipeline
+name: SonarCloud Python Pipeline
 
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
 
 jobs:
-  sonarqube:
+  sonarcloud:
+    name: SonarCloud
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout código-fonte
-      uses: actions/checkout@v2
+      - name: Checkout código-fonte
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9  # Escolha a versão do Python que você está usando
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.9  # Escolha a versão do Python que você está usando
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-    - name: Install dependencies
-      run: pip install -r requirements.txt
-
-    - name: Run SonarQube Scanner
-      run: |
-        # Configurar as informações do SonarQube, incluindo URL e token de acesso
-        SONAR_HOST_URL="https://seu-sonarqube-url-aqui"
-        SONAR_TOKEN="seu-token-de-acesso-aqui"
-
-        # Execute o scanner do SonarQube
-        sonar-scanner \
-          -Dsonar.host.url=$SONAR_HOST_URL \
-          -Dsonar.login=$SONAR_TOKEN
-
-    - name: Check Quality Gate
-      run: |
-        # Configurar as informações do SonarQube
-        SONAR_HOST_URL="https://seu-sonarqube-url-aqui"
-        SONAR_PROJECT_KEY="seu-projeto-key-aqui"
-
-        # Use o script do SonarQube para verificar o status do Quality Gate
-        QUALITY_GATE_STATUS=$(curl -s "$SONAR_HOST_URL/api/qualitygates/project_status?projectKey=$SONAR_PROJECT_KEY" | jq -r .projectStatus.status)
-
-        if [ "$QUALITY_GATE_STATUS" != "OK" ]; then
-          echo "Quality Gate falhou. Verifique o painel do SonarQube para obter detalhes."
-          exit 1
-        fi
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
