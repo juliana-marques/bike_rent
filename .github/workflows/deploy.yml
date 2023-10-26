@@ -36,4 +36,5 @@ jobs:
       run: |
         gcloud run deploy bike-rent \
           --image gcr.io/bike-rent-403120/bike-rent:$GITHUB_SHA \
-          --platform managed
+          --platform managed \
+          --region us-central1
