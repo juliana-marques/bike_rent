@@ -1,11 +1,13 @@
-#on:
-#  push:
-#    branches:
-#      - main  # Configure para a branch que deseja monitorar
+on:
+  push:
+    branches:
+      - main  
 
 jobs:
+  
+  
   sonarqube:
-    uses: sonarqube.yml
+    uses: ./.github/workflows/sonarqube
 
   deploy: 
-    uses: deploy.yml
+    uses: ./.github/workflows/cloudbuild
