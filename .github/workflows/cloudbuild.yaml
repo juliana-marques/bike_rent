@@ -27,14 +27,14 @@ jobs:
     - name: Configure Docker authentication for Google Container Registry
       run: gcloud auth configure-docker
 
-    #- name: Run Tests
-    #  run: |
-    #    python -m venv venv  # Cria um ambiente virtual
-    #    source venv/bin/activate
-    #    pip install Flask gunicorn pytest
-    #    pytest tests/
-    #    deactivate 
-    #  working-directory: ${{ github.workspace }}
+    - name: Run Tests
+      run: |
+        python -m venv venv  # Cria um ambiente virtual
+        source venv/bin/activate
+        pip install Flask gunicorn pytest
+        pytest tests/
+        deactivate 
+      working-directory: ${{ github.workspace }}
     
     - name: Build and Push Docker image
       run: |
