@@ -32,7 +32,7 @@ jobs:
         docker push gcr.io/bike-rent-403120/bike-rent:$GITHUB_SHA
 
     - name: Build multi-architecture Docker image
-      run: docker buildx build --platform linux/amd64 -t image-name:v0.1.0 .
+      run: docker buildx build --platform linux/amd64 -t gcr.io/bike-rent-403120/bike-rent:$GITHUB_SHA .
 
     - name: Deploy to Cloud Run
       run: |
