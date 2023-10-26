@@ -1,4 +1,4 @@
-![image](https://github.com/juliana-marques/bike_rent/assets/115050272/9ebd3506-5b48-4851-91ff-7c70af14f083)# bike_rent
+
 
 ## Repositório de código: Github ##
 
