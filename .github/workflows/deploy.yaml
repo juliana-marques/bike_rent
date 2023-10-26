@@ -33,7 +33,11 @@ jobs:
         gcloud run deploy bike-rent \
           --image gcr.io/bike-rent-403120/bike-rent:$GITHUB_SHA \
           --platform managed \
-          --region us-central1  
+          --region us-central1
+        if [ $? -ne 0 ]; then
+          echo "Deployment to Cloud Run failed."
+          exit 1
+        fi
 
     - name: Debug Info
       run: |
