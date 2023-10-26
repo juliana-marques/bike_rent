@@ -1,4 +1,4 @@
-from main import app
+from bike_rent.main import app
 import pytest
 
 @pytest.fixture
