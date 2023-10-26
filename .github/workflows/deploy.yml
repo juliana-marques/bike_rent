@@ -36,17 +36,4 @@ jobs:
       run: |
         gcloud run deploy bike-rent \
           --image gcr.io/bike-rent-403120/bike-rent:$GITHUB_SHA \
-          --platform managed \
-          --region us-central1
-          --filename service.yaml
-        if [ $? -ne 0 ]; then
-          echo "Deployment to Cloud Run failed."
-          exit 1
-        fi
-
-    - name: Debug Info
-      run: |
-        echo "GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}"
-        gcloud auth list
-      env:
-        GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          --platform managed
