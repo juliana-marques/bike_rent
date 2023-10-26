@@ -4,4 +4,4 @@ app_usuario = Blueprint('app_usuario', __name__)
 
 @app_usuario.route("/teste", methods=['GET'])
 def ciclista():
-    return "Teste"
+    return "Teste", 200
