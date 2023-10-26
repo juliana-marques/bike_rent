@@ -1,6 +1,8 @@
 # bike_rent
 
-Repositório de código: Github
+## Repositório de código: Github ##
+
+![image]https://github.com/juliana-marques/bike_rent/blob/main/images/cloud-run.JPG
 
 Framework Web: Flask
 
