@@ -6,7 +6,7 @@ app = Flask(__name__)
 @app.route('/', methods=['GET'])
 def hello_world():
     try:
-        return "Hello World :)"
+        return "Hello World! :)"
     except Exception as e:
         print(f"Error: {str(e)}", file=sys.stderr)
         return "Internal Server Error", 500
