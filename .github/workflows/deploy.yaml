@@ -23,6 +23,9 @@ jobs:
     - name: Update Google Cloud SDK
       run: gcloud components update
 
+    - name: Configure Docker authentication for Google Container Registry
+      run: gcloud auth configure-docker
+
     - name: Build and Push Docker image
       run: |
         docker build -t gcr.io/bike-rent-403120/bike-rent:$GITHUB_SHA .
