@@ -2,7 +2,7 @@
 
 ## Repositório de código: Github ##
 
-![image][https://github.com/juliana-marques/bike_rent/blob/main/images/cloud-run.JPG](https://github.com/juliana-marques/bike_rent/blob/main/images/repo.JPG?raw=true)
+![image](https://github.com/juliana-marques/bike_rent/blob/main/images/repo.JPG?raw=true)
 
 Framework Web: Flask
 
