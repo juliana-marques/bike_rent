@@ -29,7 +29,11 @@ jobs:
 
     - name: Run Tests
       run: |
+        python -m venv venv  # Cria um ambiente virtual
+        source venv/bin/activate
+        pip install --no-cache-dir -r requirements.txt
         pytest tests/
+        deactivate 
       working-directory: ${{ github.workspace }}
 
     - name: Generate Coverage Report
