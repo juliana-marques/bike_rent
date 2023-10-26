@@ -2,7 +2,7 @@ import sys, os
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 sys.path.insert(0, project_root)
 
-from main import hello_world
+from main import app
 import pytest
 
 @pytest.fixture
@@ -12,4 +12,6 @@ def client():
 def test_hello_world(client):
     response = client.get('/')
     assert response.status_code == 200
-    assert b"Hello World :)" in response.data
+    assert b"Hello World! :)" in response.data
+
+# version 1.0
