@@ -1,11 +1,10 @@
 from flask import Flask
-import os
 
-app_usuario = Flask(__name__)
+app = Flask(__name__)
 
-@app_usuario.route('/ciclista/dados', methods=['GET'])
-def hello_world():
-    return "Ciclista: Fulano\nIdade: Ciclano"
+@app.route('/teste/usuario', methods=['GET'])
+def ola_mundo():
+    return "Olá mundo"
 
 if __name__ == '__main__':
-    app_usuario.run(port=int(os.environ.get("PORT", 8080)),host='0.0.0.0',debug=True)
+    app.run(debug=True)
