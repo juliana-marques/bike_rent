@@ -1,0 +1,11 @@
+#on:
+#  push:
+#    branches:
+#      - main  # Configure para a branch que deseja monitorar
+
+jobs:
+  sonarqube:
+    uses: sonarqube.yml
+
+  deploy: 
+    uses: deploy.yml
