@@ -30,3 +30,6 @@ https://bike-rent-g5cdxjx55q-uc.a.run.app
 ## Endpoint implementado: /ciclista/dados ##
 
 ![image](https://github.com/juliana-marques/bike_rent/blob/main/images/endpoint.JPG?raw=true)
+
+
+ÚLTIMO COMMIT: 26/10/2023 às 13:40 (no read.me para documentar o último commit)
