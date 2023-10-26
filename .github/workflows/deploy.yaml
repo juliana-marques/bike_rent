@@ -24,8 +24,6 @@ jobs:
       run: |
         docker build -t gcr.io/bike-rent-403120/bike-rent:$GITHUB_SHA .
         docker push gcr.io/bike-rent-403120/bike-rent:$GITHUB_SHA
-      env:
-        GCP_PROJECT_ID: bike-rent-403120
 
     - name: Deploy to Cloud Run
       run: |
@@ -33,5 +31,3 @@ jobs:
           --image gcr.io/bike-rent-403120/bike-rent:$GITHUB_SHA \
           --platform managed \
           --region us-central1  
-      env:
-        GCP_PROJECT_ID: bike-rent-403120
