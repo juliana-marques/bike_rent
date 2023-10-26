@@ -27,6 +27,23 @@ jobs:
     - name: Configure Docker authentication for Google Container Registry
       run: gcloud auth configure-docker
 
+    - name: Run Tests
+      run: |
+        pytest tests/
+      working-directory: ${{ github.workspace }}
+
+    - name: Generate Coverage Report
+      run: |
+        pytest --cov=main --cov-fail-under=100 tests
+        pytest-cov --cov-report html
+      working-directory: ${{ github.workspace }}
+
+    - name: Upload Test Results
+      uses: actions/upload-artifact@v2
+      with:
+        name: test-results
+        path: ${{ github.workspace }}/htmlcov
+    
     - name: Build and Push Docker image
       run: |
         docker buildx build --platform linux/amd64 -t gcr.io/bike-rent-403120/bike-rent:$GITHUB_SHA .
