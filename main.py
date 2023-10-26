@@ -1,6 +1,5 @@
-from flask import Flask
+from flask import Flask, Blueprint
 from ms_usuario import app_usuario
-import os
 
 app = Flask(__name__)
 
