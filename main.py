@@ -4,6 +4,8 @@ import os
 
 app = Flask(__name__)
 
+app.register_blueprint(app_usuario)
+
 @app.route('/', methods=['GET'])
 def hello_world():
     try:
